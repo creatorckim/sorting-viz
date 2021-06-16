@@ -1,9 +1,10 @@
 import './App.css';
+import Visualizer from './Visualizer/Visualizer';
 
 function App() {
   return (
     <div className="App">
-      <Visualizer></Vizualizer>
+      <Visualizer></Visualizer>
     </div>
   );
 }
