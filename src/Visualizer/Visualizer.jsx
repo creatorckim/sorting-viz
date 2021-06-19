@@ -33,9 +33,11 @@ export default class Visualizer extends Component {
 
         return (
             <div id='parent-container'>
-                <h1>{this.state.numberOfBars}</h1>
-                <input type= 'range' min= '3' max= '100' value= {this.state.numberOfBars} onChange= {this.valueChange}/>
-                <button onClick={this.randomizeArray}>Get Random Array</button>
+                <header className='header'>
+                    <h1>{this.state.numberOfBars}</h1>
+                    <input type= 'range' min= '3' max= '100' value= {this.state.numberOfBars} onChange= {this.valueChange}/>
+                    <button onClick={this.randomizeArray}>Randomize</button>
+                </header>
                 <div className='array-container'>
                     {randomArray.map((value, idx) => (
                         <div className='random-div' key={idx} style={{height: `${value}%`}}></div>
