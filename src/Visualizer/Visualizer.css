@@ -1,0 +1,26 @@
+#parent-container {
+    width: 100vw;
+    height: 90vh;
+    margin: 0;
+    background: red;
+    justify-content: center;
+}
+
+.array-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: yellow;
+}
+
+.random-div {
+    background: black;
+    width: 100%;
+    border: 1px solid blue;
+    display: block;
+
+}
