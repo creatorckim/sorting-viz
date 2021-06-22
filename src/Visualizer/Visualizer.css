@@ -28,6 +28,18 @@ input {
     color: black;
 }
 
+#arraybtn {
+    background-color: #8A4FB3;
+    color: #F29BFF;
+    border: 1px solid #F29BFF;
+}
+
+#arraybtn:active {
+    background-color: #F29BFF;
+    color: #8A4FB3;
+    border: 1px solid #8A4FB3;
+}
+
 button {
     padding: 10px;
     background-color: #189AB4;
