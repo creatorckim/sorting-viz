@@ -1,6 +1,6 @@
 function BubbleSort(array) {
     let turnsArray = [];
-    let unsortedArray = array;
+    let unsortedArray = array.slice();
     for (let i = 0; i < unsortedArray.length; i++) {
         for (let j = 0; j < (unsortedArray.length - i - 1); j++) {
             if (unsortedArray[j] > unsortedArray[j + 1]) {
@@ -16,7 +16,7 @@ function BubbleSort(array) {
         }
     }
 
-    return unsortedArray;
+    return turnsArray;
 }
 
 export default BubbleSort;
