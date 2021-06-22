@@ -10,7 +10,7 @@ const Visualizer = () => {
     const [numberOfBars, setNumberOfBars] = useState(50);
     const [randomArray, setRandomArray] = useState([]);
     const [running, setRunning] = useState(false);
-    let timerSpeed = 1;
+    let timerSpeed = 10;
 
     useEffect(() => { 
         randomizeArray();
@@ -32,9 +32,22 @@ const Visualizer = () => {
         setRandomArray(array);
     }
 
-    const updateSortedArray = () => {
-        let array = SelectionSort(randomArray);
-        // console.log(array);
+    const updateSortedArray = (algorithm) => {
+        let array;
+        switch (algorithm) {
+            case "BubbleSort":
+            array = BubbleSort(randomArray);
+            break;
+            case "InsertionSort":
+            array = InsertionSort(randomArray);
+            break;
+            case "SelectionSort":
+            array = SelectionSort(randomArray);
+            break;
+            default:
+            array = BubbleSort(randomArray);
+            break;
+        }
         const arrayDivs = document.getElementsByClassName('random-div');
         for (let i = 0; i < array.length; i++) {
             let  [firstEl, secondEl] = array[i];
@@ -48,9 +61,6 @@ const Visualizer = () => {
             if (firstEl > secondEl) {
                 const timeout2 = setTimeout(() => {
                     [arrayDivs[firstEl].style.height, arrayDivs[secondEl].style.height] = [arrayDivs[secondEl].style.height, arrayDivs[firstEl].style.height];
-                    // let temp = arrayDivs[firstEl].style.height;
-                    // arrayDivs[firstEl].style.height = arrayDivs[secondEl].style.height; 
-                    // arrayDivs[secondEl].style.height = temp;
                     arrayDivs[firstEl].style.backgroundColor = 'white';
                     arrayDivs[secondEl].style.backgroundColor = 'black';
                 }, i * timerSpeed);
@@ -64,9 +74,9 @@ const Visualizer = () => {
                 <h1>{numberOfBars}</h1>
                 <input type= 'range' min= '3' max= '100' value= {numberOfBars} onChange= {(evt) => {valueChange(evt)}}/>
                 <button id='arraybtn' onClick={() => {randomizeArray()}}>New Array</button>
-                <button onClick={() => {updateSortedArray()}}>BubbleSort</button>
-                <button onClick={() => {updateSortedArray()}}>InsertionSort</button>
-                <button onClick={() => {updateSortedArray()}}>SelectionSort</button>
+                <button onClick={() => {updateSortedArray("BubbleSort")}}>BubbleSort</button>
+                <button onClick={() => {updateSortedArray("InsertionSort")}}>InsertionSort</button>
+                <button onClick={() => {updateSortedArray("SelectionSort")}}>SelectionSort</button>
             </header>
             <div className='array-container'>
                 {randomArray.map((value, idx) => (
