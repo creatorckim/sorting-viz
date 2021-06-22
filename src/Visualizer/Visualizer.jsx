@@ -2,6 +2,7 @@ import React from 'react';
 import './Visualizer.css';
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import InsertionSort from '../SortingAlgorithms/InsertionSort';
+import SelectionSort from '../SortingAlgorithms/SelectionSort';
 const { useState, useEffect } = React;
 
 
@@ -9,7 +10,7 @@ const Visualizer = () => {
     const [numberOfBars, setNumberOfBars] = useState(50);
     const [randomArray, setRandomArray] = useState([]);
     const [running, setRunning] = useState(false);
-    let timerSpeed = 10;
+    let timerSpeed = 1;
 
     useEffect(() => { 
         randomizeArray();
@@ -20,6 +21,10 @@ const Visualizer = () => {
     }
 
     const randomizeArray = () => {
+        const arrayDivs = document.getElementsByClassName('random-div');
+        for (let x = 0; x < arrayDivs.length; x++) {
+            arrayDivs[x].style.backgroundColor = "#189AB4";
+        }
         let array = [];
         for (let i = 0; i < numberOfBars; i++) {
             array.push(Math.floor((Math.random() * 100) + 1));
@@ -28,7 +33,8 @@ const Visualizer = () => {
     }
 
     const updateSortedArray = () => {
-        let array = InsertionSort(randomArray);
+        let array = SelectionSort(randomArray);
+        // console.log(array);
         const arrayDivs = document.getElementsByClassName('random-div');
         for (let i = 0; i < array.length; i++) {
             let  [firstEl, secondEl] = array[i];
@@ -41,9 +47,10 @@ const Visualizer = () => {
             }, i * timerSpeed);
             if (firstEl > secondEl) {
                 const timeout2 = setTimeout(() => {
-                    let temp = arrayDivs[firstEl].style.height;
-                    arrayDivs[firstEl].style.height = arrayDivs[secondEl].style.height; 
-                    arrayDivs[secondEl].style.height = temp;
+                    [arrayDivs[firstEl].style.height, arrayDivs[secondEl].style.height] = [arrayDivs[secondEl].style.height, arrayDivs[firstEl].style.height];
+                    // let temp = arrayDivs[firstEl].style.height;
+                    // arrayDivs[firstEl].style.height = arrayDivs[secondEl].style.height; 
+                    // arrayDivs[secondEl].style.height = temp;
                     arrayDivs[firstEl].style.backgroundColor = 'white';
                     arrayDivs[secondEl].style.backgroundColor = 'black';
                 }, i * timerSpeed);
@@ -59,6 +66,7 @@ const Visualizer = () => {
                 <button id='arraybtn' onClick={() => {randomizeArray()}}>New Array</button>
                 <button onClick={() => {updateSortedArray()}}>BubbleSort</button>
                 <button onClick={() => {updateSortedArray()}}>InsertionSort</button>
+                <button onClick={() => {updateSortedArray()}}>SelectionSort</button>
             </header>
             <div className='array-container'>
                 {randomArray.map((value, idx) => (
