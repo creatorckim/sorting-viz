@@ -3,6 +3,7 @@ import './Visualizer.css';
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import InsertionSort from '../SortingAlgorithms/InsertionSort';
 import SelectionSort from '../SortingAlgorithms/SelectionSort';
+import QuickSort from '../SortingAlgorithms/QuickSort';
 const { useState, useEffect } = React;
 
 
@@ -36,18 +37,22 @@ const Visualizer = () => {
         let array;
         switch (algorithm) {
             case "BubbleSort":
-            array = BubbleSort(randomArray);
-            break;
+                array = BubbleSort(randomArray);
+                break;
             case "InsertionSort":
-            array = InsertionSort(randomArray);
-            break;
+                array = InsertionSort(randomArray);
+                break;
             case "SelectionSort":
-            array = SelectionSort(randomArray);
-            break;
+                array = SelectionSort(randomArray);
+                break;
+            case "QuickSort":
+                array = QuickSort(randomArray);
+                break;
             default:
-            array = BubbleSort(randomArray);
+                array = BubbleSort(randomArray);
             break;
         }
+        // console.log(array);
         const arrayDivs = document.getElementsByClassName('random-div');
         for (let i = 0; i < array.length; i++) {
             let  [firstEl, secondEl] = array[i];
@@ -77,6 +82,7 @@ const Visualizer = () => {
                 <button onClick={() => {updateSortedArray("BubbleSort")}}>BubbleSort</button>
                 <button onClick={() => {updateSortedArray("InsertionSort")}}>InsertionSort</button>
                 <button onClick={() => {updateSortedArray("SelectionSort")}}>SelectionSort</button>
+                <button onClick={() => {updateSortedArray("QuickSort")}}>QuickSort</button>
             </header>
             <div className='array-container'>
                 {randomArray.map((value, idx) => (
