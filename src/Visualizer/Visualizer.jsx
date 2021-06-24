@@ -11,7 +11,7 @@ const { useState, useEffect } = React;
 const Visualizer = () => {
     const [numberOfBars, setNumberOfBars] = useState(50);
     const [randomArray, setRandomArray] = useState([]);
-    let timerSpeed = 1000;
+    let timerSpeed = 10;
 
     useEffect(() => { 
         randomizeArray();
@@ -55,7 +55,7 @@ const Visualizer = () => {
                 array = BubbleSort(randomArray);
             break;
         }
-        console.log(array);
+        // console.log(array);
         const arrayDivs = document.getElementsByClassName('random-div');
         for (let i = 0; i < array.length; i++) {
             let  [firstEl, secondEl] = array[i];
