@@ -79,14 +79,20 @@ const Visualizer = () => {
     return (
         <div id='parent-container'>
             <header className='header'>
+                <button id='arraybtn' onClick={() => {randomizeArray()}}>New Array</button>
                 <h1>{numberOfBars}</h1>
                 <input type= 'range' min= '3' max= '100' value= {numberOfBars} onChange= {(evt) => {valueChange(evt)}}/>
-                <button id='arraybtn' onClick={() => {randomizeArray()}}>New Array</button>
-                <button onClick={() => {updateSortedArray("BubbleSort")}}>BubbleSort</button>
-                <button onClick={() => {updateSortedArray("InsertionSort")}}>InsertionSort</button>
-                <button onClick={() => {updateSortedArray("SelectionSort")}}>SelectionSort</button>
-                <button onClick={() => {updateSortedArray("QuickSort")}}>QuickSort</button>
-                {/* <button onClick={() => {updateSortedArray("MergeSort")}}>MergeSort</button> */}
+                <div class="dropdown">
+                    <button class="dropbtn">Algorithms</button>
+                    <div class="dropdown-content">
+                        <button className='algobtns' onClick={() => {updateSortedArray("BubbleSort")}}>BubbleSort</button>
+                        <button className='algobtns' onClick={() => {updateSortedArray("InsertionSort")}}>InsertionSort</button>
+                        <button className='algobtns' onClick={() => {updateSortedArray("SelectionSort")}}>SelectionSort</button>
+                        <button className='algobtns' onClick={() => {updateSortedArray("QuickSort")}}>QuickSort</button>
+                        {/* <button className='algobtns' onClick={() => {updateSortedArray("MergeSort")}}>MergeSort</button> */}
+
+                    </div>
+                </div>
             </header>
             <div className='array-container'>
                 {randomArray.map((value, idx) => (
