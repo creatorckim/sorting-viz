@@ -86,7 +86,7 @@ const Visualizer = () => {
                 <button onClick={() => {updateSortedArray("InsertionSort")}}>InsertionSort</button>
                 <button onClick={() => {updateSortedArray("SelectionSort")}}>SelectionSort</button>
                 <button onClick={() => {updateSortedArray("QuickSort")}}>QuickSort</button>
-                <button onClick={() => {updateSortedArray("MergeSort")}}>MergeSort</button>
+                {/* <button onClick={() => {updateSortedArray("MergeSort")}}>MergeSort</button> */}
             </header>
             <div className='array-container'>
                 {randomArray.map((value, idx) => (
