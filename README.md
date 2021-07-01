@@ -2,6 +2,8 @@
 
 A program that shows how different sorting algorithms work
 
+Working Link: https://creatorckim.github.io/sorting-viz/
+
 # Bugs
 
 1) Bar's height sometimes does not update fast enough.
